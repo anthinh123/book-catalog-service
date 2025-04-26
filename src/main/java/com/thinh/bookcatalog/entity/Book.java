@@ -35,7 +35,6 @@ public class Book {
     @Column(name = "publication_date")
     private java.time.LocalDate publicationDate;
 
-
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "book_author",

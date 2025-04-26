@@ -5,7 +5,6 @@ import lombok.Data;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.List;
 
 @Entity
 @Data
@@ -22,6 +21,6 @@ public class Author {
     @Size(max = 2000, message = "Bio cannot exceed 2000 characters")
     private String biography;
 
-    @ManyToMany(mappedBy = "authors", fetch = FetchType.LAZY)
-    private List<Book> books;
+//    @ManyToMany(mappedBy = "authors", fetch = FetchType.LAZY)
+//    private List<Book> books;
 }
