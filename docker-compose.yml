@@ -1,0 +1,51 @@
+services:
+  # PostgreSQL Database Service
+  postgres:
+    image: postgres:16
+    container_name: postgres
+    environment:
+      POSTGRES_DB: bookdb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+    volumes:
+      - postgres_data:/var/lib/postgresql/data # Persist database data
+    ports:
+      - "5432:5432"
+    networks:
+      - bookcatalog-net
+
+  # Redis Service
+  redis:
+    image: redis:7-alpine
+    container_name: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - bookcatalog-net
+
+#  app:
+#    build: .
+#    container_name: bookcatalog-app
+#    depends_on:
+#      - db      # Wait for the db service to be ready (basic check)
+#      - redis   # Wait for the redis service to be ready (basic check)
+#    ports:
+#      - "8181:8181"
+#    environment:
+#      # Override application.yml properties for the container environment
+#      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/bookdb # Use service name 'db' as hostname
+#      SPRING_DATASOURCE_USERNAME: postgres
+#      SPRING_DATASOURCE_PASSWORD: root
+#      SPRING_DATA_REDIS_HOST: redis # Use service name 'redis' as hostname
+#      SPRING_DATA_REDIS_PORT: 6379
+#      # Optional: Add profile activation if having docker-specific configs
+#      # SPRING_PROFILES_ACTIVE: docker
+#    networks:
+#      - bookcatalog-net
+
+volumes:
+  postgres_data: # Define the named volume for PostgreSQL data persistence
+
+networks:
+  bookcatalog-net: # Define the custom network
+    driver: bridge
