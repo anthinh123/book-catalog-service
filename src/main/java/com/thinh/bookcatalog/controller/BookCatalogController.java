@@ -1,6 +1,7 @@
 package com.thinh.bookcatalog.controller;
 
 import com.thinh.bookcatalog.common.ApiResponse;
+import com.thinh.bookcatalog.common.Paging;
 import com.thinh.bookcatalog.entity.Book;
 import com.thinh.bookcatalog.service.BookService;
 import lombok.AllArgsConstructor;
@@ -16,7 +17,7 @@ public class BookCatalogController {
     private final BookService bookService;
 
     @GetMapping
-    public ResponseEntity<ApiResponse<Page<Book>>> getAllBooks(
+    public ResponseEntity<ApiResponse<Paging<Book>>> getAllBooks(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size
     ) {

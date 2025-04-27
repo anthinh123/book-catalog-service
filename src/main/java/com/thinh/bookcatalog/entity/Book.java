@@ -10,12 +10,10 @@ import java.util.List;
 
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
-@Builder
+@NoArgsConstructor
 @Table(name = "books")
-public class Book {
+public class Book  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,7 +31,7 @@ public class Book {
     private double price;
 
     @Column(name = "publication_date")
-    private java.time.LocalDate publicationDate;
+    private String publicationDate;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(

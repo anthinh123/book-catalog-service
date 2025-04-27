@@ -1,5 +1,6 @@
 package com.thinh.bookcatalog.repository;
 
+import com.thinh.bookcatalog.common.Paging;
 import com.thinh.bookcatalog.entity.Book;
 import lombok.NonNull;
 import org.springframework.data.domain.Page;
